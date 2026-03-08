@@ -5,6 +5,11 @@ var addressPoints = [
     -122.4075201
   ],
   [
+    "Markdown<br />China; Anze, China",
+    36.148142,
+    112.336072
+  ],
+  [
     "Talk 2 on Relevant Topic in Your Field<br />London School of Testing; London, UK",
     51.5074456,
     -0.1277653
