@@ -1,3 +1,15 @@
+---
+title: "Academic Pages"
+collection: talks
+type: "Talk"
+permalink: /talks/README
+venue: "xx"
+date: 2026-03-08
+location: "China"
+---
+
+Academic Pages is a GitHub Pages template for personal and professional portfolio-oriented websites.
+
 # Academic Pages
 **Academic Pages is a GitHub Pages template for personal and professional portfolio-oriented websites.**
 
