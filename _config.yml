@@ -23,7 +23,7 @@ repository               : "delluna/delluna.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "乔巴头像.jfif"
   name             : "Delluna"
   pronouns         : # example: "she/her"  
   bio              : "Short biography for the left-hand sidebar"
