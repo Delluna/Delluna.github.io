@@ -11,9 +11,9 @@ redirect_from:
 
 Education
 ======
-* 军事科学院，2022
-* 上海大学，2018
-* B.S. in GitHub, GitHub University, 2012
+* 哈尔滨工业大学，控制工程，博士研究生，2025-至今
+* 军事科学院，计算机应用技术，硕士，2022-2025
+* 上海大学，计算机科学与技术，学士，2018-2022
 
 Work experience
 ======
@@ -21,16 +21,6 @@ Work experience
   * GitHub University
   * Duties includes: Updates and improvements to template
   * Supervisor: The Users
-
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
   
 Skills
 ======
