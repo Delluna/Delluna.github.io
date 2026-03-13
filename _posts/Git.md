@@ -2,7 +2,6 @@
 title: "Git使用方法"
 date: 2026-03-13
 permalink: /posts/Git.md
-location: "Harbin, China"
 tags:
   - cool posts
   - category1
@@ -15,7 +14,7 @@ Git使用方法
 
 ## 基本介绍
 
-![Git区的划分](imgs/git.jpg)
+![Git区的划分](../images/git.jpg)
 
 - workspace: 工作区域，就是你平时存放项目代码的地方。
 - Index/Stage：暂存区域，用于临时存放你的改动，事实上它只是一个文件，保存即将提交的文件列表信息。
