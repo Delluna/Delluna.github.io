@@ -1,7 +1,7 @@
 ---
 title: "Git使用方法"
 date: 2026-03-13
-permalink: /posts/Git.md
+permalink: /posts/Git.md/
 tags:
   - cool posts
   - category1
