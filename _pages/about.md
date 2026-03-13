@@ -36,7 +36,7 @@ Skills
 
 Blog Posts
 ======
-  <ul>{% for post in site.blogposts reversed %}
+  <ul>{% for post in site.posts reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
 
