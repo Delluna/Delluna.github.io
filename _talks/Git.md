@@ -3,6 +3,7 @@ title: "Git使用方法"
 collection: talks
 type: "Tutorial"
 permalink: /talks/Git.md
+venue: "China"
 date: 2026-03-13
 location: "Harbin, China"
 ---
