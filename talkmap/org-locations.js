@@ -1,5 +1,10 @@
 var addressPoints = [
   [
+    "python\u6570\u636e\u7ed3\u6784+\u7b97\u6cd5<br />China; Harbin, China",
+    45.7593633,
+    126.6276177
+  ],
+  [
     "Academic Pages<br />xx; China",
     35.000074,
     104.999927
@@ -23,6 +28,11 @@ var addressPoints = [
     "Talk 2 on Relevant Topic in Your Field<br />London School of Testing; London, UK",
     51.5074456,
     -0.1277653
+  ],
+  [
+    "Git\u4f7f\u7528\u65b9\u6cd5<br />China; Harbin, China",
+    45.7593633,
+    126.6276177
   ],
   [
     "Tutorial 1 on Relevant Topic in Your Field<br />UC-Berkeley Institute for Testing Science; Berkeley, CA, USA",
