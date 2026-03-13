@@ -34,6 +34,12 @@ Skills
   * Sub-skill 2.3
 * Skill 3
 
+Blog Posts
+======
+  <ul>{% for post in site.blogposts reversed %}
+    {% include archive-single-cv.html %}
+  {% endfor %}</ul>
+
 Publications
 ======
 <!--
