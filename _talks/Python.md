@@ -1,6 +1,7 @@
 ---
 title: "python数据结构+算法"
 collection: talks
+venue: "China"
 type: "Tutorial"
 permalink: /talks/Python.md
 date: 2026-03-13
