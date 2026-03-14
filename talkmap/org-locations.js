@@ -1,10 +1,5 @@
 var addressPoints = [
   [
-    "Academic Pages<br />xx; China",
-    35.000074,
-    104.999927
-  ],
-  [
     "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites<br />China; Anze, China",
     36.148142,
     112.336072
