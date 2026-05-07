@@ -433,6 +433,17 @@ print("Shape of batched multiplication result:", (tensor1 @ tensor2).shape)
              3.6596, 4.1051, 2.2051]])
     Shape of batched multiplication result: torch.Size([32, 10, 30])
 
+‌高维矩阵（张量Tensor）的矩阵乘法
+**核心原理‌：** 将最后两个维度视为标准二维矩阵，其余维度作为“批量维度”（batch dimensions），执行批量矩阵乘法。
+**形状要求‌：**
+设两个张量形状分别为 (..., M, K) 和 (..., K, N)，则结果形状为 (..., M, N)。
+**广播规则‌：** 
+广播仅作用于最后两个维度之前的维度‌（即批量维度）。
+（从后向前对齐）：
+对应维度相等，或
+其中一个维度为 1，或
+缺失维度视为 1。
+若不满足上述条件，则抛出广播错误。
 
 ## Broadcasting and Other Useful Operations
 
