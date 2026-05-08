@@ -22,10 +22,23 @@ A description for Transformer.
 4. 自注意力机制
 5. 多头
 6. FFN
-7. 残差连接
-8. Layer Norm
-9. encoder-decoder
-10. Mask Attn
+7. 残差连接&&Layer Norm
+8. encoder-decoder
+9. Mask Attn
+
+nlp数据处理过程：
+
+数据预处理：
+句子->分词->token(input_ids,attn_mask)
+
+进入模型：
+embedding
+position embedding 
+stacked encoder/decoder layer{注意力层(缩放点积注意力，多头注意力，mask注意力),前馈神经网络}
+线性层
+
+模型输出logits：
+softmax输出下一词的概率分布，根据选择策略（topk,topp,temperature等）选择一个词，自回归输出完整句子。
 
 代码：
 
