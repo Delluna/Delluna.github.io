@@ -4,8 +4,11 @@ date: 2026-05-08
 permalink: /posts/2026/05/Transformer/
 tags:
   - Transformer
-description："Transformer"
 ---
+
+A description for Transformer
+
+
 
 - Transformer
 - Nlp
