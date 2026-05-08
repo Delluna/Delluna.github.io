@@ -336,6 +336,12 @@ Matrix operations are at the heart of deep learning. Let's find out different wa
 - **Element-wise Multiplication:** Uses `torch.mul()` or `*` for element-wise multiplication.  
 - **Batch Matrix Multiplication:** Uses `torch.bmm()` to multiply batches of matrices efficiently.
 
+|函数 | 适用维度 |	是否支持广播 |	典型用途 |
+|  ----  | ----  |  ----  | ----  |
+|torch.mm() |	‌仅二维‌ | 否	| 标准矩阵乘法|
+|torch.bmm() |	‌三维（批量）‌	| 否 |	批量矩阵乘法|
+|torch.matmul() |	‌任意维度‌	| 是	| 通用矩阵乘法（含批量、高维）|
+|torch.mul() 或 * |	任意维度	| 是 |	‌元素级乘法‌（非矩阵乘）|
 
 ```python
 # Matrix multiplication using @ operator and torch.mm
@@ -434,16 +440,9 @@ print("Shape of batched multiplication result:", (tensor1 @ tensor2).shape)
     Shape of batched multiplication result: torch.Size([32, 10, 30])
 
 ‌高维矩阵（张量Tensor）的矩阵乘法
-**核心原理‌：** 将最后两个维度视为标准二维矩阵，其余维度作为“批量维度”（batch dimensions），执行批量矩阵乘法。
-**形状要求‌：**
-设两个张量形状分别为 (..., M, K) 和 (..., K, N)，则结果形状为 (..., M, N)。
-**广播规则‌：** 
-广播仅作用于最后两个维度之前的维度‌（即批量维度）。
-（从后向前对齐）：
-对应维度相等，或
-其中一个维度为 1，或
-缺失维度视为 1。
-若不满足上述条件，则抛出广播错误。
+- **核心原理‌：** 将最后两个维度视为标准二维矩阵，其余维度作为“批量维度”（batch dimensions），执行批量矩阵乘法。
+- **形状要求‌：** 设两个张量形状分别为 (..., M, K) 和 (..., K, N)，则结果形状为 (..., M, N)。
+- **广播规则‌：** 广播仅作用于最后两个维度之前的维度‌（即批量维度）。从后向前对齐：(1)对应维度相等，(2)其中一个维度为 1，(3)缺失维度视为 1。各个维度必须满足上述条件之一，否则抛出广播错误。
 
 ## Broadcasting and Other Useful Operations
 
@@ -610,7 +609,8 @@ Learn how to reshape tensors, concatenate them, and change the order of dimensio
 - **Concatenation:** `torch.cat([x1, x2], dim=0/1)` merges tensors along rows/columns.  
 - **Flattening:** `.view(-1)` converts a tensor into a 1D array.  
 - **Batch Reshaping:** `.view(batch, -1)` keeps batch size while reshaping.  
-- **Permute Dimensions:** `.permute(0, 2, 1)` reorders dimensions efficiently.  
+- **Permute Dimensions:** `.permute(0, 2, 1)` reorders dimensions efficiently.
+- **Transpose Dimensions:** `.transpose(dim0, dim1)` reorders dimensions dim0 and dim1.
 - **Unsqueeze for New Dimensions:** `.unsqueeze(dim)` adds singleton dimensions.  
 
 
