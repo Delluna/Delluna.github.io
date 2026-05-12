@@ -26,6 +26,15 @@ A description for Transformer.
 8. encoder-decoder
 9. Mask Attn
 
+优点：
+
+1. 并行
+2. 解决长距离依赖问题
+3. 结构灵活，可扩展Scale
+4. 支持预训练+微调
+
+原本任务：机器翻译。扩展任务：encoder-only用于理解任务；decoder-only用于生成任务；vit用于图像/视频处理任务；LLM用于AI大模型；...
+
 nlp数据处理过程：
 
 1. 数据预处理：
@@ -347,14 +356,47 @@ class Transformer(nn.Module):
 
 ```
 
-优点：
+**Transformer Attention（注意力机制）矩阵运算与物理含义**
 
-1. 并行
-2. 解决长距离依赖问题
-3. 结构灵活，可扩展Scale
-4. 支持预训练+微调
+**维度定义及意义（假设 $n$ 为序列长度）**
 
-原本任务：机器翻译。扩展任务：encoder-only用于理解任务；decoder-only用于生成任务；vit用于图像/视频处理任务；LLM用于AI大模型；...
+- In (Embedding): $n \times d_{embedding}$
+- Q (Query): $n \times d_{tmp}$, Q的每一行表示每个token的Q信息。
+- K (Key): $n \times d_{tmp}$, $K^{T}$的每一列表示每个token的K信息。
+- V (Value): $n \times d_{embedding}$
+- Attn: $n \times n$, Attn的第i行第j列表示第i个token的Q信息与第j个token的K信息的相关性，简单理解为 $Attn(i,j) = R(token_{i},token_{j})$。
+- Out: $n \times d_{embedding}$ —— “融合上下文后的新特征”
+
+$Q$ 提出需求, $K$ 提供索引, $QK^T$ 计算相关性, $V$ 提供信息。
+
+**多头注意力 (Multi-Head)**
+
+- $Q_{head}, K_{head}: head \times n \times (d_{tmp} // head)$
+- $V_{head}: head \times n \times (d_{embedding} // head)$
+- $W^O$：其维度通常为 $d_{embedding} \times d_{embedding}$
+
+每个头在不同的特征子空间里独立进行上述的“加权平均”，再通过 concat 恢复维度，经过一个线性映射层 $W^O$ ,使得最终的 $V_{new}$ 每一个 Token 都集成了来自多个子空间的上下文信息。
+
+**矩阵乘法： $V_{new} = Attn \times V$**
+
+- 运算: $V_{new}$ 的第 $i$ 行第 $j$ 列 = $Attn$ 的第 $i$ 行与 $V$ 的第 $j$ 列的点积。
+- 含义: 所有token第 $j$ 维特征的 $Attn$ 加权平均得到第 $i$ 个token在第 $j$ 维的特征。
+- 结论: $V_{new}$ 的第 $i$ 行是全文所有 Token 原始特征（ $V$ 的每一行）的加权线性组合。 这意味着第 $i$ 个 Token 在“看过”全篇后，吸收了相关 Token 的信息，更新了自己的语义。
+
+**Softmax**
+
+ **`dim=-1` 代表最后一个维度，也就是“列”的方向，但它的操作效果是每一行内部，跨越所有的列进行计算，让每一行的和为 1。**
+
+在计算 $attn = \text{softmax}(\frac{QK^T}{\sqrt{d}}, \text{dim}=-1)$ 时：
+
+* 每一行代表一个 **Query (第 $i$ 个 token)**。
+* 我们需要知道这个 Query 对所有 **Key (所有 token)** 的注意力分配。
+* Query $i$ 对 Key $1$ 的分值、对 Key $2$ 的分值... 全都在**第 $i$ 行**。
+* 为了让 Query $i$ 的总注意力权重为 $100\%$，我们必须对**这一行**做归一化。
+* 所以，必须沿着“列”的方向（`dim=-1`）去做 Softmax。
+* 它保证了：**每一个 Token (Query) 看到的全局视野 (Keys) 权重加和为 1。**
+
+---
 
 ## NLP
 
