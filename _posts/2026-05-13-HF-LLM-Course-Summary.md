@@ -724,7 +724,7 @@ classifier = pipeline("sentiment-analysis")
 classifier("I've been waiting for a HuggingFace course my whole life.")
 ```
 
-```python out
+```python
 [{'label': 'POSITIVE', 'score': 0.9598047137260437}]
 ```
 
@@ -736,7 +736,7 @@ classifier(
 )
 ```
 
-```python out
+```python
 [{'label': 'POSITIVE', 'score': 0.9598047137260437},
  {'label': 'NEGATIVE', 'score': 0.9994558095932007}]
 ```
@@ -799,7 +799,7 @@ classifier(
 )
 ```
 
-```python out
+```python
 {'sequence': 'This is a course about the Transformers library',
  'labels': ['education', 'business', 'politics'],
  'scores': [0.8445963859558105, 0.111976258456707, 0.043427448719739914]}
@@ -822,7 +822,7 @@ generator = pipeline("text-generation")
 generator("In this course, we will teach you how to")
 ```
 
-```python out
+```python
 [{'generated_text': 'In this course, we will teach you how to understand and use '
                     'data flow and data interchange when handling user data. We '
                     'will be working with one or more of the most commonly used '
@@ -852,7 +852,7 @@ generator(
 )
 ```
 
-```python out
+```python
 [{'generated_text': 'In this course, we will teach you how to manipulate the world and '
                     'move your mental and physical capabilities to your advantage.'},
  {'generated_text': 'In this course, we will teach you how to become an expert and '
@@ -884,7 +884,7 @@ unmasker = pipeline("fill-mask")
 unmasker("This course will teach you all about <mask> models.", top_k=2)
 ```
 
-```python out
+```python
 [{'sequence': 'This course will teach you all about mathematical models.',
   'score': 0.19619831442832947,
   'token': 30412,
@@ -911,7 +911,7 @@ ner = pipeline("ner", aggregation_strategy="simple")
 ner("My name is Sylvain and I work at Hugging Face in Brooklyn.")
 ```
 
-```python out
+```python
 [{'entity_group': 'PER', 'score': 0.99816, 'word': 'Sylvain', 'start': 11, 'end': 18}, 
  {'entity_group': 'ORG', 'score': 0.97960, 'word': 'Hugging Face', 'start': 33, 'end': 45}, 
  {'entity_group': 'LOC', 'score': 0.99321, 'word': 'Brooklyn', 'start': 49, 'end': 57}
@@ -939,7 +939,7 @@ question_answerer(
 )
 ```
 
-```python out
+```python
 {'score': 0.6385916471481323, 'start': 33, 'end': 45, 'answer': 'Hugging Face'}
 ```
 
@@ -977,7 +977,7 @@ summarizer(
 )
 ```
 
-```python out
+```python
 [{'summary_text': ' America has changed dramatically during recent years . The '
                   'number of engineering graduates in the U.S. has declined in '
                   'traditional engineering disciplines such as mechanical, civil '
@@ -1001,7 +1001,7 @@ translator = pipeline("translation", model="Helsinki-NLP/opus-mt-fr-en")
 translator("Ce cours est produit par Hugging Face.")
 ```
 
-```python out
+```python
 [{'translation_text': 'This course is produced by Hugging Face.'}]
 ```
 
@@ -1028,7 +1028,7 @@ result = image_classifier(
 print(result)
 ```
 
-```python out
+```python
 [{'label': 'lynx, catamount', 'score': 0.43350091576576233},
  {'label': 'cougar, puma, catamount, mountain lion, painter, panther, Felis concolor',
   'score': 0.034796204417943954},
@@ -1052,7 +1052,7 @@ result = transcriber(
 print(result)
 ```
 
-```python out
+```python
 {'text': ' I have a dream that one day this nation will rise up and live out the true meaning of its creed.'}
 ```
 
@@ -1974,7 +1974,7 @@ result = unmasker("This woman works as a [MASK].")
 print([r["token_str"] for r in result])
 ```
 
-```python out
+```python
 ['lawyer', 'carpenter', 'doctor', 'waiter', 'mechanic']
 ['nurse', 'waitress', 'teacher', 'maid', 'prostitute']
 ```
@@ -2095,7 +2095,7 @@ classifier(
 
 and obtained:
 
-```python out
+```python
 [{'label': 'POSITIVE', 'score': 0.9598047137260437},
  {'label': 'NEGATIVE', 'score': 0.9994558095932007}]
 ```
@@ -2147,7 +2147,7 @@ Don't worry about padding and truncation just yet; we'll explain those later. Th
 
 Here's what the results look like as PyTorch tensors:
 
-```python out
+```python
 {
     'input_ids': tensor([
         [  101,  1045,  1005,  2310,  2042,  3403,  2005,  1037, 17662, 12172, 2607,  2026,  2878,  2166,  1012,   102],
@@ -2198,7 +2198,7 @@ outputs = model(**inputs)
 print(outputs.last_hidden_state.shape)
 ```
 
-```python out
+```python
 torch.Size([2, 16, 768])
 ```
 
@@ -2243,7 +2243,7 @@ Now if we look at the shape of our outputs, the dimensionality will be much lowe
 print(outputs.logits.shape)
 ```
 
-```python out
+```python
 torch.Size([2, 2])
 ```
 
@@ -2257,7 +2257,7 @@ The values we get as output from our model don't necessarily make sense by thems
 print(outputs.logits)
 ```
 
-```python out
+```python
 tensor([[-1.5607,  1.6123],
         [ 4.1692, -3.3464]], grad_fn=<AddmmBackward>)
 ```
@@ -2271,7 +2271,7 @@ predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)
 print(predictions)
 ```
 
-```python out
+```python
 tensor([[4.0195e-02, 9.5980e-01],
         [9.9946e-01, 5.4418e-04]], grad_fn=<SoftmaxBackward>)
 ```
@@ -2284,7 +2284,7 @@ To get the labels corresponding to each position, we can inspect the `id2label` 
 model.config.id2label
 ```
 
-```python out
+```python
 {0: 'NEGATIVE', 1: 'POSITIVE'}
 ```
 
@@ -2401,7 +2401,7 @@ encoded_input = tokenizer("Hello, I'm a single sentence!")
 print(encoded_input)
 ```
 
-```python out
+```python
 {'input_ids': [101, 8667, 117, 1000, 1045, 1005, 1049, 2235, 17662, 12172, 1012, 102], 
  'token_type_ids': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
  'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
@@ -2419,7 +2419,7 @@ We can decode the input IDs to get back the original text:
 tokenizer.decode(encoded_input["input_ids"])
 ```
 
-```python out
+```python
 "[CLS] Hello, I'm a single sentence! [SEP]"
 ```
 
@@ -2432,7 +2432,7 @@ encoded_input = tokenizer("How are you?", "I'm fine, thank you!")
 print(encoded_input)
 ```
 
-```python out
+```python
 {'input_ids': [[101, 1731, 1132, 1128, 136, 102], [101, 1045, 1005, 1049, 2503, 117, 5763, 1128, 136, 102]], 
  'token_type_ids': [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], 
  'attention_mask': [[1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]}
@@ -2445,7 +2445,7 @@ encoded_input = tokenizer("How are you?", "I'm fine, thank you!", return_tensors
 print(encoded_input)
 ```
 
-```python out
+```python
 {'input_ids': tensor([[  101,  1731,  1132,  1128,   136,   102],
          [  101,  1045,  1005,  1049,  2503,   117,  5763,  1128,   136,   102]]), 
  'token_type_ids': tensor([[0, 0, 0, 0, 0, 0],
@@ -2467,7 +2467,7 @@ encoded_input = tokenizer(
 print(encoded_input)
 ```
 
-```python out
+```python
 {'input_ids': tensor([[  101,  1731,  1132,  1128,   136,   102,     0,     0,     0,     0],
          [  101,  1045,  1005,  1049,  2503,   117,  5763,  1128,   136,   102]]), 
  'token_type_ids': tensor([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -2490,7 +2490,7 @@ encoded_input = tokenizer(
 print(encoded_input["input_ids"])
 ```
 
-```python out
+```python
 [101, 1188, 1110, 170, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1505, 1179, 5650, 119, 102]
 ```
 
@@ -2507,7 +2507,7 @@ encoded_input = tokenizer(
 print(encoded_input)
 ```
 
-```python out
+```python
 {'input_ids': tensor([[  101,  1731,  1132,  1128,   102],
          [  101,  1045,  1005,  1049,   102]]), 
  'token_type_ids': tensor([[0, 0, 0, 0, 0],
@@ -2526,7 +2526,7 @@ print(encoded_input["input_ids"])
 tokenizer.decode(encoded_input["input_ids"])
 ```
 
-```python out
+```python
 [101, 1731, 1132, 1128, 136, 102]
 '[CLS] How are you? [SEP]'
 ```
@@ -2622,7 +2622,7 @@ tokenized_text = "Jim Henson was a puppeteer".split()
 print(tokenized_text)
 ```
 
-```python out
+```python
 ['Jim', 'Henson', 'was', 'a', 'puppeteer']
 ```
 
@@ -2711,7 +2711,7 @@ We can now use the tokenizer as shown in the previous section:
 tokenizer("Using a Transformer network is simple")
 ```
 
-```python out
+```python
 {'input_ids': [101, 7993, 170, 11303, 1200, 2443, 1110, 3014, 102],
  'token_type_ids': [0, 0, 0, 0, 0, 0, 0, 0, 0],
  'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1]}
@@ -2754,7 +2754,7 @@ print(tokens)
 
 The output of this method is a list of strings, or tokens:
 
-```python out
+```python
 ['Using', 'a', 'transform', '##er', 'network', 'is', 'simple']
 ```
 
@@ -2770,7 +2770,7 @@ ids = tokenizer.convert_tokens_to_ids(tokens)
 print(ids)
 ```
 
-```python out
+```python
 [7993, 170, 11303, 1200, 2443, 1110, 3014]
 ```
 
@@ -2788,7 +2788,7 @@ decoded_string = tokenizer.decode([7993, 170, 11303, 1200, 2443, 1110, 3014])
 print(decoded_string)
 ```
 
-```python out
+```python
 'Using a Transformer network is simple'
 ```
 
@@ -2830,7 +2830,7 @@ input_ids = torch.tensor(ids)
 model(input_ids)
 ```
 
-```python out
+```python
 IndexError: Dimension out of range (expected to be in range of [-1, 0], but got 1)
 ```
 
@@ -2843,7 +2843,7 @@ tokenized_inputs = tokenizer(sequence, return_tensors="pt")
 print(tokenized_inputs["input_ids"])
 ```
 
-```python out
+```python
 tensor([[  101,  1045,  1005,  2310,  2042,  3403,  2005,  1037, 17662, 12172,
           2607,  2026,  2878,  2166,  1012,   102]])
 ```
@@ -2872,7 +2872,7 @@ print("Logits:", output.logits)
 
 We print the input IDs as well as the resulting logits — here's the output:
 
-```python out
+```python
 Input IDs: [[ 1045,  1005,  2310,  2042,  3403,  2005,  1037, 17662, 12172,  2607, 2026,  2878,  2166,  1012]]
 Logits: [[-2.7276,  2.8789]]
 ```
@@ -2929,7 +2929,7 @@ print(model(torch.tensor(sequence2_ids)).logits)
 print(model(torch.tensor(batched_ids)).logits)
 ```
 
-```python out
+```python
 tensor([[ 1.5694, -1.3895]], grad_fn=<AddmmBackward>)
 tensor([[ 0.5803, -0.4125]], grad_fn=<AddmmBackward>)
 tensor([[ 1.5694, -1.3895],
@@ -2961,7 +2961,7 @@ outputs = model(torch.tensor(batched_ids), attention_mask=torch.tensor(attention
 print(outputs.logits)
 ```
 
-```python out
+```python
 tensor([[ 1.5694, -1.3895],
         [ 0.5803, -0.4125]], grad_fn=<AddmmBackward>)
 ```
@@ -3077,7 +3077,7 @@ ids = tokenizer.convert_tokens_to_ids(tokens)
 print(ids)
 ```
 
-```python out
+```python
 [101, 1045, 1005, 2310, 2042, 3403, 2005, 1037, 17662, 12172, 2607, 2026, 2878, 2166, 1012, 102]
 [1045, 1005, 2310, 2042, 3403, 2005, 1037, 17662, 12172, 2607, 2026, 2878, 2166, 1012]
 ```
@@ -3089,7 +3089,7 @@ print(tokenizer.decode(model_inputs["input_ids"]))
 print(tokenizer.decode(ids))
 ```
 
-```python out
+```python
 "[CLS] i've been waiting for a huggingface course my whole life. [SEP]"
 "i've been waiting for a huggingface course my whole life."
 ```
@@ -4070,7 +4070,7 @@ raw_datasets = load_dataset("glue", "mrpc")
 raw_datasets
 ```
 
-```python out
+```python
 DatasetDict({
     train: Dataset({
         features: ['sentence1', 'sentence2', 'label', 'idx'],
@@ -4099,7 +4099,7 @@ raw_train_dataset = raw_datasets["train"]
 raw_train_dataset[0]
 ```
 
-```python out
+```python
 {'idx': 0,
  'label': 1,
  'sentence1': 'Amrozi accused his brother , whom he called " the witness " , of deliberately distorting his evidence .',
@@ -4112,7 +4112,7 @@ We can see the labels are already integers, so we won't have to do any preproces
 raw_train_dataset.features
 ```
 
-```python out
+```python
 {'sentence1': Value(dtype='string', id=None),
  'sentence2': Value(dtype='string', id=None),
  'label': ClassLabel(num_classes=2, names=['not_equivalent', 'equivalent'], names_file=None, id=None),
@@ -4149,7 +4149,7 @@ inputs = tokenizer("This is the first sentence.", "This is the second one.")
 inputs
 ```
 
-```python out
+```python
 { 
   'input_ids': [101, 2023, 2003, 1996, 2034, 6251, 1012, 102, 2023, 2003, 1996, 2117, 2028, 1012, 102],
   'token_type_ids': [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1],
@@ -4170,13 +4170,13 @@ tokenizer.convert_ids_to_tokens(inputs["input_ids"])
 
 we will get:
 
-```python out
+```python
 ['[CLS]', 'this', 'is', 'the', 'first', 'sentence', '.', '[SEP]', 'this', 'is', 'the', 'second', 'one', '.', '[SEP]']
 ```
 
 So we see the model expects the inputs to be of the form `[CLS] sentence1 [SEP] sentence2 [SEP]` when there are two sentences. Aligning this with the `token_type_ids` gives us:
 
-```python out
+```python
 ['[CLS]', 'this', 'is', 'the', 'first', 'sentence', '.', '[SEP]', 'this', 'is', 'the', 'second', 'one', '.', '[SEP]']
 [      0,      0,    0,     0,       0,          0,   0,       0,      1,    1,     1,        1,     1,   1,       1]
 ```
@@ -4227,7 +4227,7 @@ tokenized_datasets
 
 The way the 🤗 Datasets library applies this processing is by adding new fields to the datasets, one for each key in the dictionary returned by the preprocessing function:
 
-```python out
+```python
 DatasetDict({
     train: Dataset({
         features: ['attention_mask', 'idx', 'input_ids', 'label', 'sentence1', 'sentence2', 'token_type_ids'],
@@ -4275,7 +4275,7 @@ samples = {k: v for k, v in samples.items() if k not in ["idx", "sentence1", "se
 [len(x) for x in samples["input_ids"]]
 ```
 
-```python out
+```python
 [50, 59, 47, 67, 59, 50, 62, 32]
 ```
 
@@ -4286,7 +4286,7 @@ batch = data_collator(samples)
 {k: v.shape for k, v in batch.items()}
 ```
 
-```python out
+```python
 {'attention_mask': torch.Size([8, 67]),
  'input_ids': torch.Size([8, 67]),
  'token_type_ids': torch.Size([8, 67]),
@@ -4404,7 +4404,7 @@ predictions = trainer.predict(tokenized_datasets["validation"])
 print(predictions.predictions.shape, predictions.label_ids.shape)
 ```
 
-```python out
+```python
 (408, 2) (408,)
 ```
 
@@ -4427,7 +4427,7 @@ metric = evaluate.load("glue", "mrpc")
 metric.compute(predictions=preds, references=predictions.label_ids)
 ```
 
-```python out
+```python
 {'accuracy': 0.8578431372549019, 'f1': 0.8996539792387542}
 ```
 
@@ -4594,7 +4594,7 @@ for batch in train_dataloader:
 {k: v.shape for k, v in batch.items()}
 ```
 
-```python out
+```python
 {'attention_mask': torch.Size([8, 65]),
  'input_ids': torch.Size([8, 65]),
  'labels': torch.Size([8]),
@@ -4618,7 +4618,7 @@ outputs = model(**batch)
 print(outputs.loss, outputs.logits.shape)
 ```
 
-```python out
+```python
 tensor(0.5441, grad_fn=<NllLossBackward>) torch.Size([8, 2])
 ```
 
@@ -4657,7 +4657,7 @@ lr_scheduler = get_scheduler(
 print(num_training_steps)
 ```
 
-```python out
+```python
 1377
 ```
 
@@ -4673,7 +4673,7 @@ model.to(device)
 device
 ```
 
-```python out
+```python
 device(type='cuda')
 ```
 
@@ -4735,7 +4735,7 @@ for batch in eval_dataloader:
 metric.compute()
 ```
 
-```python out
+```python
 {'accuracy': 0.8431372549019608, 'f1': 0.8907849829351535}
 ```
 
@@ -5252,7 +5252,7 @@ camembert_fill_mask = pipeline("fill-mask", model="camembert-base")
 results = camembert_fill_mask("Le camembert est <mask> :)")
 ```
 
-```python out
+```python
 [
   {'sequence': 'Le camembert est délicieux :)', 'score': 0.49091005325317383, 'token': 7200, 'token_str': 'délicieux'}, 
   {'sequence': 'Le camembert est excellent :)', 'score': 0.1055697426199913, 'token': 2183, 'token_str': 'excellent'}, 
@@ -5950,7 +5950,7 @@ By default, loading local files creates a `DatasetDict` object with a `train` sp
 squad_it_dataset
 ```
 
-```python out
+```python
 DatasetDict({
     train: Dataset({
         features: ['title', 'paragraphs'],
@@ -5965,7 +5965,7 @@ This shows us the number of rows and the column names associated with the traini
 squad_it_dataset["train"][0]
 ```
 
-```python out
+```python
 {
     "title": "Terremoto del Sichuan del 2008",
     "paragraphs": [
@@ -5993,7 +5993,7 @@ squad_it_dataset = load_dataset("json", data_files=data_files, field="data")
 squad_it_dataset
 ```
 
-```python out
+```python
 DatasetDict({
     train: Dataset({
         features: ['title', 'paragraphs'],
@@ -6077,7 +6077,7 @@ drug_sample = drug_dataset["train"].shuffle(seed=42).select(range(1000))
 drug_sample[:3]
 ```
 
-```python out
+```python
 {'Unnamed: 0': [87571, 178045, 80482],
  'drugName': ['Naproxen', 'Duloxetine', 'Mobic'],
  'condition': ['Gout, Acute', 'ibromyalgia', 'Inflammatory Conditions'],
@@ -6111,7 +6111,7 @@ drug_dataset = drug_dataset.rename_column(
 drug_dataset
 ```
 
-```python out
+```python
 DatasetDict({
     train: Dataset({
         features: ['patient_id', 'drugName', 'condition', 'review', 'rating', 'date', 'usefulCount'],
@@ -6137,7 +6137,7 @@ def lowercase_condition(example):
 drug_dataset.map(lowercase_condition)
 ```
 
-```python out
+```python
 AttributeError: 'NoneType' object has no attribute 'lower'
 ```
 
@@ -6166,7 +6166,7 @@ To apply this function to an input, we need to wrap it and the input in parenthe
 (lambda x: x * x)(3)
 ```
 
-```python out
+```python
 9
 ```
 
@@ -6176,7 +6176,7 @@ Similarly, we can define lambda functions with multiple arguments by separating 
 (lambda base, height: 0.5 * base * height)(4, 8)
 ```
 
-```python out
+```python
 16.0
 ```
 
@@ -6194,7 +6194,7 @@ drug_dataset = drug_dataset.map(lowercase_condition)
 drug_dataset["train"]["condition"][:3]
 ```
 
-```python out
+```python
 ['left ventricular dysfunction', 'adhd', 'birth control']
 ```
 
@@ -6219,7 +6219,7 @@ drug_dataset = drug_dataset.map(compute_review_length)
 drug_dataset["train"][0]
 ```
 
-```python out
+```python
 {'patient_id': 206461,
  'drugName': 'Valsartan',
  'condition': 'left ventricular dysfunction',
@@ -6236,7 +6236,7 @@ As expected, we can see a `review_length` column has been added to our training 
 drug_dataset["train"].sort("review_length")[:3]
 ```
 
-```python out
+```python
 {'patient_id': [103488, 23627, 20558],
  'drugName': ['Loestrin 21 1 / 20', 'Chlorzoxazone', 'Nucynta'],
  'condition': ['birth control', 'muscle spasm', 'pain'],
@@ -6259,7 +6259,7 @@ drug_dataset = drug_dataset.filter(lambda x: x["review_length"] > 30)
 print(drug_dataset.num_rows)
 ```
 
-```python out
+```python
 {'train': 138514, 'test': 46108}
 ```
 
@@ -6277,7 +6277,7 @@ text = "I&#039;m a transformer called BERT"
 html.unescape(text)
 ```
 
-```python out
+```python
 "I'm a transformer called BERT"
 ```
 
@@ -6388,7 +6388,7 @@ result = tokenize_and_split(drug_dataset["train"][0])
 [len(inp) for inp in result["input_ids"]]
 ```
 
-```python out
+```python
 [128, 49]
 ```
 
@@ -6398,7 +6398,7 @@ So, our first example in the training set became two features because it was tok
 tokenized_dataset = drug_dataset.map(tokenize_and_split, batched=True)
 ```
 
-```python out
+```python
 ArrowInvalid: Column 1 named condition expected length 1463 but got length 1000
 ```
 
@@ -6418,7 +6418,7 @@ Now this works without error. We can check that our new dataset has many more el
 len(tokenized_dataset["train"]), len(drug_dataset["train"])
 ```
 
-```python out
+```python
 (206772, 138514)
 ```
 
@@ -6446,7 +6446,7 @@ tokenized_dataset = drug_dataset.map(tokenize_and_split, batched=True)
 tokenized_dataset
 ```
 
-```python out
+```python
 DatasetDict({
     train: Dataset({
         features: ['attention_mask', 'condition', 'date', 'drugName', 'input_ids', 'patient_id', 'rating', 'review', 'review_length', 'token_type_ids', 'usefulCount'],
@@ -6602,7 +6602,7 @@ freq_dataset = Dataset.from_pandas(frequencies)
 freq_dataset
 ```
 
-```python out
+```python
 Dataset({
     features: ['condition', 'frequency'],
     num_rows: 819
@@ -6633,7 +6633,7 @@ drug_dataset_clean["test"] = drug_dataset["test"]
 drug_dataset_clean
 ```
 
-```python out
+```python
 DatasetDict({
     train: Dataset({
         features: ['patient_id', 'drugName', 'condition', 'review', 'rating', 'date', 'usefulCount', 'review_length', 'review_clean'],
@@ -6702,7 +6702,7 @@ drug_dataset_reloaded = load_from_disk("drug-reviews")
 drug_dataset_reloaded
 ```
 
-```python out
+```python
 DatasetDict({
     train: Dataset({
         features: ['patient_id', 'drugName', 'condition', 'review', 'rating', 'date', 'usefulCount', 'review_length'],
@@ -6732,7 +6732,7 @@ This saves each split in [JSON Lines format](https://jsonlines.org), where each 
 !head -n 1 drug-reviews-train.jsonl
 ```
 
-```python out
+```python
 {"patient_id":141780,"drugName":"Escitalopram","condition":"depression","review":"\"I seemed to experience the regular side effects of LEXAPRO, insomnia, low sex drive, sleepiness during the day. I am taking it at night because my doctor said if it made me tired to take it at night. I assumed it would and started out taking it at night. Strange dreams, some pleasant. I was diagnosed with fibromyalgia. Seems to be helping with the pain. Have had anxiety and depression in my family, and have tried quite a few other medications that haven't worked. Only have been on it for two weeks but feel more positive in my mind, want to accomplish more in my life. Hopefully the side effects will dwindle away, worth it to stick with it from hearing others responses. Great medication.\"","rating":9.0,"date":"May 29, 2011","usefulCount":10,"review_length":125}
 ```
 
@@ -6784,7 +6784,7 @@ pubmed_dataset = load_dataset("json", data_files=data_files, split="train")
 pubmed_dataset
 ```
 
-```python out
+```python
 Dataset({
     features: ['meta', 'text'],
     num_rows: 15518009
@@ -6802,7 +6802,7 @@ Let's inspect the contents of the first example:
 pubmed_dataset[0]
 ```
 
-```python out
+```python
 {'meta': {'pmid': 11409574, 'language': 'eng'},
  'text': 'Epidemiology of hypoxaemia in children with acute lower respiratory infection.\nTo determine the prevalence of hypoxaemia in children aged under 5 years suffering acute lower respiratory infections (ALRI), the risk factors for hypoxaemia in children under 5 years of age with ALRI, and the association of hypoxaemia with an increased risk of dying in children of the same age ...'}
 ```
@@ -6826,7 +6826,7 @@ import psutil
 print(f"RAM used: {psutil.Process().memory_info().rss / (1024 * 1024):.2f} MB")
 ```
 
-```python out
+```python
 RAM used: 5678.33 MB
 ```
 
@@ -6838,7 +6838,7 @@ size_gb = pubmed_dataset.dataset_size / (1024**3)
 print(f"Dataset size (cache file) : {size_gb:.2f} GB")
 ```
 
-```python out
+```python
 Dataset size in bytes : 20979437051
 Dataset size (cache file) : 19.54 GB
 ```
@@ -6868,7 +6868,7 @@ print(
 )
 ```
 
-```python out
+```python
 'Iterated over 15518009 examples (about 19.5 GB) in 64.2s, i.e. 0.304 GB/s'
 ```
 
@@ -6894,7 +6894,7 @@ Instead of the familiar `Dataset` that we've encountered elsewhere in this chapt
 next(iter(pubmed_dataset_streamed))
 ```
 
-```python out
+```python
 {'meta': {'pmid': 11409574, 'language': 'eng'},
  'text': 'Epidemiology of hypoxaemia in children with acute lower respiratory infection.\nTo determine the prevalence of hypoxaemia in children aged under 5 years suffering acute lower respiratory infections (ALRI), the risk factors for hypoxaemia in children under 5 years of age with ALRI, and the association of hypoxaemia with an increased risk of dying in children of the same age ...'}
 ```
@@ -6909,7 +6909,7 @@ tokenized_dataset = pubmed_dataset_streamed.map(lambda x: tokenizer(x["text"]))
 next(iter(tokenized_dataset))
 ```
 
-```python out
+```python
 {'input_ids': [101, 4958, 5178, 4328, 6779, ...], 'attention_mask': [1, 1, 1, 1, 1, ...]}
 ```
 
@@ -6923,7 +6923,7 @@ shuffled_dataset = pubmed_dataset_streamed.shuffle(buffer_size=10_000, seed=42)
 next(iter(shuffled_dataset))
 ```
 
-```python out
+```python
 {'meta': {'pmid': 11410799, 'language': 'eng'},
  'text': 'Randomized study of dose or schedule modification of granulocyte colony-stimulating factor in platinum-based chemotherapy for elderly patients with lung cancer ...'}
 ```
@@ -6935,7 +6935,7 @@ dataset_head = pubmed_dataset_streamed.take(5)
 list(dataset_head)
 ```
 
-```python out
+```python
 [{'meta': {'pmid': 11409574, 'language': 'eng'},
   'text': 'Epidemiology of hypoxaemia in children with acute lower respiratory infection ...'},
  {'meta': {'pmid': 11409575, 'language': 'eng'},
@@ -6969,7 +6969,7 @@ law_dataset_streamed = load_dataset(
 next(iter(law_dataset_streamed))
 ```
 
-```python out
+```python
 {'meta': {'case_ID': '110921.json',
   'case_jurisdiction': 'scotus.tar.gz',
   'date_created': '2010-04-28T17:12:49Z'},
@@ -6986,7 +6986,7 @@ combined_dataset = interleave_datasets([pubmed_dataset_streamed, law_dataset_str
 list(islice(combined_dataset, 2))
 ```
 
-```python out
+```python
 [{'meta': {'pmid': 11409574, 'language': 'eng'},
   'text': 'Epidemiology of hypoxaemia in children with acute lower respiratory infection ...'},
  {'meta': {'case_ID': '110921.json',
@@ -7010,7 +7010,7 @@ pile_dataset = load_dataset("json", data_files=data_files, streaming=True)
 next(iter(pile_dataset["train"]))
 ```
 
-```python out
+```python
 {'meta': {'pile_set_name': 'Pile-CC'},
  'text': 'It is done, and submitted. You can play “Survival of the Tastiest” on Android, and on the web...'}
 ```
@@ -7067,7 +7067,7 @@ The `response` object contains a lot of useful information about the request, in
 response.status_code
 ```
 
-```python out
+```python
 200
 ```
 
@@ -7077,7 +7077,7 @@ where a `200` status means the request was successful (you can find a list of po
 response.json()
 ```
 
-```python out
+```python
 [{'url': 'https://api.github.com/repos/huggingface/datasets/issues/2792',
   'repository_url': 'https://api.github.com/repos/huggingface/datasets',
   'labels_url': 'https://api.github.com/repos/huggingface/datasets/issues/2792/labels{/name}',
@@ -7201,7 +7201,7 @@ issues_dataset = load_dataset("json", data_files="datasets-issues.jsonl", split=
 issues_dataset
 ```
 
-```python out
+```python
 Dataset({
     features: ['url', 'repository_url', 'labels_url', 'comments_url', 'events_url', 'html_url', 'id', 'node_id', 'number', 'title', 'user', 'labels', 'state', 'locked', 'assignee', 'assignees', 'milestone', 'comments', 'created_at', 'updated_at', 'closed_at', 'author_association', 'active_lock_reason', 'pull_request', 'body', 'timeline_url', 'performed_via_github_app'],
     num_rows: 3019
@@ -7227,7 +7227,7 @@ for url, pr in zip(sample["html_url"], sample["pull_request"]):
     print(f">> Pull request: {pr}\n")
 ```
 
-```python out
+```python
 >> URL: https://github.com/huggingface/datasets/pull/850
 >> Pull request: {'url': 'https://api.github.com/repos/huggingface/datasets/pulls/850', 'html_url': 'https://github.com/huggingface/datasets/pull/850', 'diff_url': 'https://github.com/huggingface/datasets/pull/850.diff', 'patch_url': 'https://github.com/huggingface/datasets/pull/850.patch'}
 
@@ -7270,7 +7270,7 @@ response = requests.get(url, headers=headers)
 response.json()
 ```
 
-```python out
+```python
 [{'url': 'https://api.github.com/repos/huggingface/datasets/issues/comments/897594128',
   'html_url': 'https://github.com/huggingface/datasets/pull/2792#issuecomment-897594128',
   'issue_url': 'https://api.github.com/repos/huggingface/datasets/issues/2792',
@@ -7314,7 +7314,7 @@ def get_comments(issue_number):
 get_comments(2792)
 ```
 
-```python out
+```python
 ["@albertvillanova my tests are failing here:\r\n```\r\ndataset_name = 'gooaq'\r\n\r\n    def test_load_dataset(self, dataset_name):\r\n        configs = self.dataset_tester.load_all_configs(dataset_name, is_local=True)[:1]\r\n>       self.dataset_tester.check_load_dataset(dataset_name, configs, is_local=True, use_local_dummy_data=True)\r\n\r\ntests/test_dataset_common.py:234: \r\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \r\ntests/test_dataset_common.py:187: in check_load_dataset\r\n    self.parent.assertTrue(len(dataset[split]) > 0)\r\nE   AssertionError: False is not true\r\n```\r\nWhen I try loading dataset on local machine it works fine. Any suggestions on how can I avoid this error?"]
 ```
 
@@ -7360,7 +7360,7 @@ remote_dataset = load_dataset("lewtun/github-issues", split="train")
 remote_dataset
 ```
 
-```python out
+```python
 Dataset({
     features: ['url', 'repository_url', 'labels_url', 'comments_url', 'events_url', 'html_url', 'id', 'node_id', 'number', 'title', 'user', 'labels', 'state', 'locked', 'assignee', 'assignees', 'milestone', 'comments', 'created_at', 'updated_at', 'closed_at', 'author_association', 'active_lock_reason', 'pull_request', 'body', 'performed_via_github_app', 'is_pull_request'],
     num_rows: 2855
@@ -7428,7 +7428,7 @@ issues_dataset = load_dataset("lewtun/github-issues", split="train")
 issues_dataset
 ```
 
-```python out
+```python
 Dataset({
     features: ['url', 'repository_url', 'labels_url', 'comments_url', 'events_url', 'html_url', 'id', 'node_id', 'number', 'title', 'user', 'labels', 'state', 'locked', 'assignee', 'assignees', 'milestone', 'comments', 'created_at', 'updated_at', 'closed_at', 'author_association', 'active_lock_reason', 'pull_request', 'body', 'performed_via_github_app', 'is_pull_request'],
     num_rows: 2855
@@ -7444,7 +7444,7 @@ issues_dataset = issues_dataset.filter(
 issues_dataset
 ```
 
-```python out
+```python
 Dataset({
     features: ['url', 'repository_url', 'labels_url', 'comments_url', 'events_url', 'html_url', 'id', 'node_id', 'number', 'title', 'user', 'labels', 'state', 'locked', 'assignee', 'assignees', 'milestone', 'comments', 'created_at', 'updated_at', 'closed_at', 'author_association', 'active_lock_reason', 'pull_request', 'body', 'performed_via_github_app', 'is_pull_request'],
     num_rows: 771
@@ -7461,7 +7461,7 @@ issues_dataset = issues_dataset.remove_columns(columns_to_remove)
 issues_dataset
 ```
 
-```python out
+```python
 Dataset({
     features: ['html_url', 'title', 'comments', 'body'],
     num_rows: 771
@@ -7481,7 +7481,7 @@ If we inspect the first row in this `DataFrame` we can see there are four commen
 df["comments"][0].tolist()
 ```
 
-```python out
+```python
 ['the bug code locate in ：\r\n    if data_args.task_name is not None:\r\n        ### Downloading and loading a dataset from the hub.\r\n        datasets = load_dataset("glue", data_args.task_name, cache_dir=model_args.cache_dir)',
  'Hi @jinec,\r\n\r\nFrom time to time we get this kind of `ConnectionError` coming from the github.com website: https://raw.githubusercontent.com\r\n\r\nNormally, it should work if you wait a little and then retry.\r\n\r\nCould you please confirm if the problem persists?',
  'cannot connect，even by Web browser，please check that  there is some  problems。',
@@ -7546,7 +7546,7 @@ comments_dataset = Dataset.from_pandas(comments_df)
 comments_dataset
 ```
 
-```python out
+```python
 Dataset({
     features: ['html_url', 'title', 'comments', 'body'],
     num_rows: 2842
@@ -7574,7 +7574,7 @@ comments_dataset = comments_dataset.filter(lambda x: x["comment_length"] > 15)
 comments_dataset
 ```
 
-```python out
+```python
 Dataset({
     features: ['html_url', 'title', 'comments', 'body', 'comment_length'],
     num_rows: 2098
@@ -7646,7 +7646,7 @@ embedding = get_embeddings(comments_dataset["text"][0])
 embedding.shape
 ```
 
-```python out
+```python
 torch.Size([1, 768])
 ```
 
@@ -7681,7 +7681,7 @@ question_embedding = get_embeddings([question]).cpu().detach().numpy()
 question_embedding.shape
 ```
 
-```python out
+```python
 torch.Size([1, 768])
 ```
 
@@ -7693,7 +7693,7 @@ question_embedding = get_embeddings([question]).numpy()
 question_embedding.shape
 ```
 
-```python out
+```python
 (1, 768)
 ```
 
@@ -7729,7 +7729,7 @@ for _, row in samples_df.iterrows():
     print()
 ```
 
-```python out
+```python
 """
 COMMENT: Requiring online connection is a deal breaker in some cases unfortunately so it'd be great if offline mode is added similar to how `transformers` loads models offline fine.
 
@@ -7897,7 +7897,7 @@ We can have a look at the training split to see which columns we have access to:
 raw_datasets["train"]
 ```
 
-```python out
+```python
 Dataset({
     features: ['repository_name', 'func_path_in_repository', 'func_name', 'whole_func_string', 'language', 
       'func_code_string', 'func_code_tokens', 'func_documentation_string', 'func_documentation_tokens', 'split_name', 
@@ -7960,7 +7960,7 @@ print(list(gen))
 
 we get them once and then an empty list:
 
-```python out
+```python
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 []
 ```
@@ -8013,7 +8013,7 @@ tokens = old_tokenizer.tokenize(example)
 tokens
 ```
 
-```python out
+```python
 ['def', 'Ġadd', '_', 'n', 'umbers', '(', 'a', ',', 'Ġb', '):', 'Ċ', 'Ġ', 'Ġ', 'Ġ', 'Ġ"""', 'Add', 'Ġthe', 'Ġtwo',
  'Ġnumbers', 'Ġ`', 'a', '`', 'Ġand', 'Ġ`', 'b', '`', '."', '""', 'Ċ', 'Ġ', 'Ġ', 'Ġ', 'Ġreturn', 'Ġa', 'Ġ+', 'Ġb']
 ```
@@ -8039,7 +8039,7 @@ tokens = tokenizer.tokenize(example)
 tokens
 ```
 
-```python out
+```python
 ['def', 'Ġadd', '_', 'numbers', '(', 'a', ',', 'Ġb', '):', 'ĊĠĠĠ', 'Ġ"""', 'Add', 'Ġthe', 'Ġtwo', 'Ġnumbers', 'Ġ`',
  'a', '`', 'Ġand', 'Ġ`', 'b', '`."""', 'ĊĠĠĠ', 'Ġreturn', 'Ġa', 'Ġ+', 'Ġb']
 ```
@@ -8051,7 +8051,7 @@ print(len(tokens))
 print(len(old_tokenizer.tokenize(example)))
 ```
 
-```python out
+```python
 27
 36
 ```
@@ -8070,7 +8070,7 @@ example = """class LinearLayer():
 tokenizer.tokenize(example)
 ```
 
-```python out
+```python
 ['class', 'ĠLinear', 'Layer', '():', 'ĊĠĠĠ', 'Ġdef', 'Ġ__', 'init', '__(', 'self', ',', 'Ġinput', '_', 'size', ',',
  'Ġoutput', '_', 'size', '):', 'ĊĠĠĠĠĠĠĠ', 'Ġself', '.', 'weight', 'Ġ=', 'Ġtorch', '.', 'randn', '(', 'input', '_',
  'size', ',', 'Ġoutput', '_', 'size', ')', 'ĊĠĠĠĠĠĠĠ', 'Ġself', '.', 'bias', 'Ġ=', 'Ġtorch', '.', 'zeros', '(',
@@ -8154,7 +8154,7 @@ print(type(encoding))
 
 As mentioned previously, we get a `BatchEncoding` object in the tokenizer's output:
 
-```python out
+```python
 <class 'transformers.tokenization_utils_base.BatchEncoding'>
 ```
 
@@ -8164,7 +8164,7 @@ Since the `AutoTokenizer` class picks a fast tokenizer by default, we can use th
 tokenizer.is_fast
 ```
 
-```python out
+```python
 True
 ```
 
@@ -8174,7 +8174,7 @@ or check the same attribute of our `encoding`:
 encoding.is_fast
 ```
 
-```python out
+```python
 True
 ```
 
@@ -8184,7 +8184,7 @@ Let's see what a fast tokenizer enables us to do. First, we can access the token
 encoding.tokens()
 ```
 
-```python out
+```python
 ['[CLS]', 'My', 'name', 'is', 'S', '##yl', '##va', '##in', 'and', 'I', 'work', 'at', 'Hu', '##gging', 'Face', 'in',
  'Brooklyn', '.', '[SEP]']
 ```
@@ -8195,7 +8195,7 @@ In this case the token at index 5 is `##yl`, which is part of the word "Sylvain"
 encoding.word_ids()
 ```
 
-```python out
+```python
 [None, 0, 1, 2, 3, 3, 3, 3, 4, 5, 6, 7, 8, 8, 9, 10, 11, 12, None]
 ```
 
@@ -8215,7 +8215,7 @@ start, end = encoding.word_to_chars(3)
 example[start:end]
 ```
 
-```python out
+```python
 Sylvain
 ```
 
@@ -8249,7 +8249,7 @@ token_classifier = pipeline("token-classification")
 token_classifier("My name is Sylvain and I work at Hugging Face in Brooklyn.")
 ```
 
-```python out
+```python
 [{'entity': 'I-PER', 'score': 0.9993828, 'index': 4, 'word': 'S', 'start': 11, 'end': 12},
  {'entity': 'I-PER', 'score': 0.99815476, 'index': 5, 'word': '##yl', 'start': 12, 'end': 14},
  {'entity': 'I-PER', 'score': 0.99590725, 'index': 6, 'word': '##va', 'start': 14, 'end': 16},
@@ -8269,7 +8269,7 @@ token_classifier = pipeline("token-classification", aggregation_strategy="simple
 token_classifier("My name is Sylvain and I work at Hugging Face in Brooklyn.")
 ```
 
-```python out
+```python
 [{'entity_group': 'PER', 'score': 0.9981694, 'word': 'Sylvain', 'start': 11, 'end': 18},
  {'entity_group': 'ORG', 'score': 0.97960204, 'word': 'Hugging Face', 'start': 33, 'end': 45},
  {'entity_group': 'LOC', 'score': 0.99321055, 'word': 'Brooklyn', 'start': 49, 'end': 57}]
@@ -8306,7 +8306,7 @@ print(inputs["input_ids"].shape)
 print(outputs.logits.shape)
 ```
 
-```python out
+```python
 torch.Size([1, 19])
 torch.Size([1, 19, 9])
 ```
@@ -8321,7 +8321,7 @@ predictions = outputs.logits.argmax(dim=-1)[0].tolist()
 print(predictions)
 ```
 
-```python out
+```python
 [0, 0, 0, 0, 4, 4, 4, 4, 0, 0, 0, 0, 6, 6, 6, 0, 8, 0, 0]
 ```
 
@@ -8331,7 +8331,7 @@ The `model.config.id2label` attribute contains the mapping of indexes to labels 
 model.config.id2label
 ```
 
-```python out
+```python
 {0: 'O',
  1: 'B-MISC',
  2: 'I-MISC',
@@ -8368,7 +8368,7 @@ for idx, pred in enumerate(predictions):
 print(results)
 ```
 
-```python out
+```python
 [{'entity': 'I-PER', 'score': 0.9993828, 'index': 4, 'word': 'S'},
  {'entity': 'I-PER', 'score': 0.99815476, 'index': 5, 'word': '##yl'},
  {'entity': 'I-PER', 'score': 0.99590725, 'index': 6, 'word': '##va'},
@@ -8386,7 +8386,7 @@ inputs_with_offsets = tokenizer(example, return_offsets_mapping=True)
 inputs_with_offsets["offset_mapping"]
 ```
 
-```python out
+```python
 [(0, 0), (0, 2), (3, 7), (8, 10), (11, 12), (12, 14), (14, 16), (16, 18), (19, 22), (23, 24), (25, 29), (30, 32),
  (33, 35), (35, 40), (41, 45), (46, 48), (49, 57), (57, 58), (0, 0)]
 ```
@@ -8400,7 +8400,7 @@ example[12:14]
 
 we get the proper span of text without the `##`:
 
-```python out
+```python
 yl
 ```
 
@@ -8429,7 +8429,7 @@ for idx, pred in enumerate(predictions):
 print(results)
 ```
 
-```python out
+```python
 [{'entity': 'I-PER', 'score': 0.9993828, 'index': 4, 'word': 'S', 'start': 11, 'end': 12},
  {'entity': 'I-PER', 'score': 0.99815476, 'index': 5, 'word': '##yl', 'start': 12, 'end': 14},
  {'entity': 'I-PER', 'score': 0.99590725, 'index': 6, 'word': '##va', 'start': 14, 'end': 16},
@@ -8452,7 +8452,7 @@ With the offsets, all that custom code goes away: we just can take the span in t
 example[33:45]
 ```
 
-```python out
+```python
 Hugging Face
 ```
 
@@ -8504,7 +8504,7 @@ print(results)
 
 And we get the same results as with our second pipeline!
 
-```python out
+```python
 [{'entity_group': 'PER', 'score': 0.9981694, 'word': 'Sylvain', 'start': 11, 'end': 18},
  {'entity_group': 'ORG', 'score': 0.97960204, 'word': 'Hugging Face', 'start': 33, 'end': 45},
  {'entity_group': 'LOC', 'score': 0.99321055, 'word': 'Brooklyn', 'start': 49, 'end': 57}]
@@ -8542,7 +8542,7 @@ question = "Which deep learning libraries back 🤗 Transformers?"
 question_answerer(question=question, context=context)
 ```
 
-```python out
+```python
 {'score': 0.97773,
  'start': 78,
  'end': 105,
@@ -8592,7 +8592,7 @@ between them. It's straightforward to train your models with one before loading 
 question_answerer(question=question, context=long_context)
 ```
 
-```python out
+```python
 {'score': 0.97149,
  'start': 1892,
  'end': 1919,
@@ -8630,7 +8630,7 @@ end_logits = outputs.end_logits
 print(start_logits.shape, end_logits.shape)
 ```
 
-```python out
+```python
 torch.Size([1, 66]) torch.Size([1, 66])
 ```
 
@@ -8690,7 +8690,7 @@ print(scores[start_index, end_index])
 
 We're not quite done yet, but at least we already have the correct score for the answer (you can check this by comparing it to the first result in the previous section):
 
-```python out
+```python
 0.97773
 ```
 
@@ -8720,7 +8720,7 @@ result = {
 print(result)
 ```
 
-```python out
+```python
 {'answer': 'Jax, PyTorch and TensorFlow',
  'start': 78,
  'end': 105,
@@ -8741,7 +8741,7 @@ inputs = tokenizer(question, long_context)
 print(len(inputs["input_ids"]))
 ```
 
-```python out
+```python
 461
 ```
 
@@ -8752,7 +8752,7 @@ inputs = tokenizer(question, long_context, max_length=384, truncation="only_seco
 print(tokenizer.decode(inputs["input_ids"]))
 ```
 
-```python out
+```python
 """
 [CLS] Which deep learning libraries back [UNK] Transformers? [SEP] [UNK] Transformers : State of the Art NLP
 
@@ -8802,7 +8802,7 @@ for ids in inputs["input_ids"]:
     print(tokenizer.decode(ids))
 ```
 
-```python out
+```python
 '[CLS] This sentence is not [SEP]'
 '[CLS] is not too long [SEP]'
 '[CLS] too long but we [SEP]'
@@ -8820,7 +8820,7 @@ Let's take a closer look at the result of the tokenization:
 print(inputs.keys())
 ```
 
-```python out
+```python
 dict_keys(['input_ids', 'attention_mask', 'overflow_to_sample_mapping'])
 ```
 
@@ -8830,7 +8830,7 @@ As expected, we get input IDs and an attention mask. The last key, `overflow_to_
 print(inputs["overflow_to_sample_mapping"])
 ```
 
-```python out
+```python
 [0, 0, 0, 0, 0, 0, 0]
 ```
 
@@ -8850,7 +8850,7 @@ print(inputs["overflow_to_sample_mapping"])
 
 gets us:
 
-```python out
+```python
 [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1]
 ```
 
@@ -8881,7 +8881,7 @@ inputs = inputs.convert_to_tensors("pt")
 print(inputs["input_ids"].shape)
 ```
 
-```python out
+```python
 torch.Size([2, 384])
 ```
 
@@ -8895,7 +8895,7 @@ end_logits = outputs.end_logits
 print(start_logits.shape, end_logits.shape)
 ```
 
-```python out
+```python
 torch.Size([2, 384]) torch.Size([2, 384])
 ```
 
@@ -8937,7 +8937,7 @@ for start_probs, end_probs in zip(start_probabilities, end_probabilities):
 print(candidates)
 ```
 
-```python out
+```python
 [(0, 18, 0.33867), (173, 184, 0.97149)]
 ```
 
@@ -8958,7 +8958,7 @@ for candidate, offset in zip(candidates, offsets):
     print(result)
 ```
 
-```python out
+```python
 {'answer': '\n🤗 Transformers: State of the Art NLP', 'start': 0, 'end': 37, 'score': 0.33867}
 {'answer': 'Jax, PyTorch and TensorFlow', 'start': 1892, 'end': 1919, 'score': 0.97149}
 ```
@@ -8995,7 +8995,7 @@ tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
 print(type(tokenizer.backend_tokenizer))
 ```
 
-```python out
+```python
 <class 'tokenizers.Tokenizer'>
 ```
 
@@ -9005,7 +9005,7 @@ The `normalizer` attribute of the `tokenizer` object has a `normalize_str()` met
 print(tokenizer.backend_tokenizer.normalizer.normalize_str("Héllò hôw are ü?"))
 ```
 
-```python out
+```python
 'hello how are u?'
 ```
 
@@ -9026,7 +9026,7 @@ To see how a fast tokenizer performs pre-tokenization, we can use the `pre_token
 tokenizer.backend_tokenizer.pre_tokenizer.pre_tokenize_str("Hello, how are  you?")
 ```
 
-```python out
+```python
 [('Hello', (0, 5)), (',', (5, 6)), ('how', (7, 10)), ('are', (11, 14)), ('you', (16, 19)), ('?', (19, 20))]
 ```
 
@@ -9041,7 +9041,7 @@ tokenizer.backend_tokenizer.pre_tokenizer.pre_tokenize_str("Hello, how are  you?
 
 it will split on whitespace and punctuation as well, but it will keep the spaces and replace them with a `Ġ` symbol, enabling it to recover the original spaces if we decode the tokens:
 
-```python out
+```python
 [('Hello', (0, 5)), (',', (5, 6)), ('Ġhow', (6, 10)), ('Ġare', (10, 14)), ('Ġ', (14, 15)), ('Ġyou', (15, 19)),
  ('?', (19, 20))]
 ```
@@ -9055,7 +9055,7 @@ tokenizer = AutoTokenizer.from_pretrained("t5-small")
 tokenizer.backend_tokenizer.pre_tokenizer.pre_tokenize_str("Hello, how are  you?")
 ```
 
-```python out
+```python
 [('▁Hello,', (0, 6)), ('▁how', (7, 10)), ('▁are', (11, 14)), ('▁you?', (16, 20))]
 ```
 
@@ -9208,7 +9208,7 @@ for text in corpus:
 print(word_freqs)
 ```
 
-```python out
+```python
 defaultdict(int, {'This': 3, 'Ġis': 2, 'Ġthe': 1, 'ĠHugging': 1, 'ĠFace': 1, 'ĠCourse': 1, '.': 4, 'Ġchapter': 1,
     'Ġabout': 1, 'Ġtokenization': 1, 'Ġsection': 1, 'Ġshows': 1, 'Ġseveral': 1, 'Ġtokenizer': 1, 'Ġalgorithms': 1,
     'Hopefully': 1, ',': 1, 'Ġyou': 1, 'Ġwill': 1, 'Ġbe': 1, 'Ġable': 1, 'Ġto': 1, 'Ġunderstand': 1, 'Ġhow': 1,
@@ -9229,7 +9229,7 @@ alphabet.sort()
 print(alphabet)
 ```
 
-```python out
+```python
 [ ',', '.', 'C', 'F', 'H', 'T', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's',
   't', 'u', 'v', 'w', 'y', 'z', 'Ġ']
 ```
@@ -9272,7 +9272,7 @@ for i, key in enumerate(pair_freqs.keys()):
         break
 ```
 
-```python out
+```python
 ('T', 'h'): 3
 ('h', 'i'): 3
 ('i', 's'): 5
@@ -9295,7 +9295,7 @@ for pair, freq in pair_freqs.items():
 print(best_pair, max_freq)
 ```
 
-```python out
+```python
 ('Ġ', 't') 7
 ```
 
@@ -9332,7 +9332,7 @@ splits = merge_pair("Ġ", "t", splits)
 print(splits["Ġtrained"])
 ```
 
-```python out
+```python
 ['Ġt', 'r', 'a', 'i', 'n', 'e', 'd']
 ```
 
@@ -9360,7 +9360,7 @@ As a result, we've learned 19 merge rules (the initial vocabulary had a size of 
 print(merges)
 ```
 
-```python out
+```python
 {('Ġ', 't'): 'Ġt', ('i', 's'): 'is', ('e', 'r'): 'er', ('Ġ', 'a'): 'Ġa', ('Ġt', 'o'): 'Ġto', ('e', 'n'): 'en',
  ('T', 'h'): 'Th', ('Th', 'is'): 'This', ('o', 'u'): 'ou', ('s', 'e'): 'se', ('Ġto', 'k'): 'Ġtok',
  ('Ġtok', 'en'): 'Ġtoken', ('n', 'd'): 'nd', ('Ġ', 'is'): 'Ġis', ('Ġt', 'h'): 'Ġth', ('Ġth', 'e'): 'Ġthe',
@@ -9373,7 +9373,7 @@ And the vocabulary is composed of the special token, the initial alphabet, and a
 print(vocab)
 ```
 
-```python out
+```python
 ['<|endoftext|>', ',', '.', 'C', 'F', 'H', 'T', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'k', 'l', 'm', 'n', 'o',
  'p', 'r', 's', 't', 'u', 'v', 'w', 'y', 'z', 'Ġ', 'Ġt', 'is', 'er', 'Ġa', 'Ġto', 'en', 'Th', 'This', 'ou', 'se',
  'Ġtok', 'Ġtoken', 'nd', 'Ġis', 'Ġth', 'Ġthe', 'in', 'Ġab', 'Ġtokeni']
@@ -9408,7 +9408,7 @@ We can try this on any text composed of characters in the alphabet:
 tokenize("This is not a token.")
 ```
 
-```python out
+```python
 ['This', 'Ġis', 'Ġ', 'n', 'o', 't', 'Ġa', 'Ġtoken', '.']
 ```
 
@@ -9534,7 +9534,7 @@ for text in corpus:
 word_freqs
 ```
 
-```python out
+```python
 defaultdict(
     int, {'This': 3, 'is': 2, 'the': 1, 'Hugging': 1, 'Face': 1, 'Course': 1, '.': 4, 'chapter': 1, 'about': 1,
     'tokenization': 1, 'section': 1, 'shows': 1, 'several': 1, 'tokenizer': 1, 'algorithms': 1, 'Hopefully': 1,
@@ -9559,7 +9559,7 @@ alphabet
 print(alphabet)
 ```
 
-```python out
+```python
 ['##a', '##b', '##c', '##d', '##e', '##f', '##g', '##h', '##i', '##k', '##l', '##m', '##n', '##o', '##p', '##r', '##s',
  '##t', '##u', '##v', '##w', '##y', '##z', ',', '.', 'C', 'F', 'H', 'T', 'a', 'b', 'c', 'g', 'h', 'i', 's', 't', 'u',
  'w', 'y']
@@ -9614,7 +9614,7 @@ for i, key in enumerate(pair_scores.keys()):
         break
 ```
 
-```python out
+```python
 ('T', '##h'): 0.125
 ('##h', '##i'): 0.03409090909090909
 ('##i', '##s'): 0.02727272727272727
@@ -9636,7 +9636,7 @@ for pair, score in pair_scores.items():
 print(best_pair, max_score)
 ```
 
-```python out
+```python
 ('a', '##b') 0.2
 ```
 
@@ -9672,7 +9672,7 @@ splits = merge_pair("a", "##b", splits)
 splits["about"]
 ```
 
-```python out
+```python
 ['ab', '##o', '##u', '##t']
 ```
 
@@ -9702,7 +9702,7 @@ We can then look at the generated vocabulary:
 print(vocab)
 ```
 
-```python out
+```python
 ['[PAD]', '[UNK]', '[CLS]', '[SEP]', '[MASK]', '##a', '##b', '##c', '##d', '##e', '##f', '##g', '##h', '##i', '##k',
  '##l', '##m', '##n', '##o', '##p', '##r', '##s', '##t', '##u', '##v', '##w', '##y', '##z', ',', '.', 'C', 'F', 'H',
  'T', 'a', 'b', 'c', 'g', 'h', 'i', 's', 't', 'u', 'w', 'y', 'ab', '##fu', 'Fa', 'Fac', '##ct', '##ful', '##full', '##fully',
@@ -9740,7 +9740,7 @@ print(encode_word("Hugging"))
 print(encode_word("HOgging"))
 ```
 
-```python out
+```python
 ['Hugg', '##i', '##n', '##g']
 ['[UNK]']
 ```
@@ -9761,7 +9761,7 @@ We can try it on any text:
 tokenize("This is the Hugging Face course!")
 ```
 
-```python out
+```python
 ['Th', '##i', '##s', 'is', 'th', '##e', 'Hugg', '##i', '##n', '##g', 'Fac', '##e', 'c', '##o', '##u', '##r', '##s',
  '##e', '[UNK]']
 ```
@@ -9958,7 +9958,7 @@ sorted_subwords = sorted(subwords_freqs.items(), key=lambda x: x[1], reverse=Tru
 sorted_subwords[:10]
 ```
 
-```python out
+```python
 [('▁t', 7), ('is', 5), ('er', 5), ('▁a', 5), ('▁to', 4), ('to', 4), ('en', 4), ('▁T', 3), ('▁Th', 3), ('▁Thi', 3)]
 ```
 
@@ -10031,7 +10031,7 @@ print(encode_word("Hopefully", model))
 print(encode_word("This", model))
 ```
 
-```python out
+```python
 (['H', 'o', 'p', 'e', 'f', 'u', 'll', 'y'], 41.5157494601402)
 (['This'], 6.288267030694535)
 ```
@@ -10053,7 +10053,7 @@ We can check it works on the model we have:
 compute_loss(model)
 ```
 
-```python out
+```python
 413.10377642940875
 ```
 
@@ -10086,7 +10086,7 @@ print(scores["his"])
 
 Since `"ll"` is used in the tokenization of `"Hopefully"`, and removing it will probably make us use the token `"l"` twice instead, we expect it will have a positive loss. `"his"` is only used inside the word `"This"`, which is tokenized as itself, so we expect it to have a zero loss. Here are the results:
 
-```python out
+```python
 6.376412403623874
 0.0
 ```
@@ -10122,7 +10122,7 @@ def tokenize(text, model):
 tokenize("This is the Hugging Face course.", model)
 ```
 
-```python out
+```python
 ['▁This', '▁is', '▁the', '▁Hugging', '▁Face', '▁', 'c', 'ou', 'r', 's', 'e', '.']
 ```
 
@@ -10232,7 +10232,7 @@ As we've seen before, we can use the `normalize_str()` method of the `normalizer
 print(tokenizer.normalizer.normalize_str("Héllò hôw are ü?"))
 ```
 
-```python out
+```python
 hello how are u?
 ```
 
@@ -10258,7 +10258,7 @@ Note that the `Whitespace` pre-tokenizer splits on whitespace and all characters
 tokenizer.pre_tokenizer.pre_tokenize_str("Let's test my pre-tokenizer.")
 ```
 
-```python out
+```python
 [('Let', (0, 3)), ("'", (3, 4)), ('s', (4, 5)), ('test', (6, 10)), ('my', (11, 13)), ('pre', (14, 17)),
  ('-', (17, 18)), ('tokenizer', (18, 27)), ('.', (27, 28))]
 ```
@@ -10270,7 +10270,7 @@ pre_tokenizer = pre_tokenizers.WhitespaceSplit()
 pre_tokenizer.pre_tokenize_str("Let's test my pre-tokenizer.")
 ```
 
-```python out
+```python
 [("Let's", (0, 5)), ('test', (6, 10)), ('my', (11, 13)), ('pre-tokenizer.', (14, 28))]
 ```
 
@@ -10283,7 +10283,7 @@ pre_tokenizer = pre_tokenizers.Sequence(
 pre_tokenizer.pre_tokenize_str("Let's test my pre-tokenizer.")
 ```
 
-```python out
+```python
 [('Let', (0, 3)), ("'", (3, 4)), ('s', (4, 5)), ('test', (6, 10)), ('my', (11, 13)), ('pre', (14, 17)),
  ('-', (17, 18)), ('tokenizer', (18, 27)), ('.', (27, 28))]
 ```
@@ -10317,7 +10317,7 @@ encoding = tokenizer.encode("Let's test this tokenizer.")
 print(encoding.tokens)
 ```
 
-```python out
+```python
 ['let', "'", 's', 'test', 'this', 'tok', '##eni', '##zer', '.']
 ```
 
@@ -10331,7 +10331,7 @@ sep_token_id = tokenizer.token_to_id("[SEP]")
 print(cls_token_id, sep_token_id)
 ```
 
-```python out
+```python
 (2, 3)
 ```
 
@@ -10356,7 +10356,7 @@ encoding = tokenizer.encode("Let's test this tokenizer.")
 print(encoding.tokens)
 ```
 
-```python out
+```python
 ['[CLS]', 'let', "'", 's', 'test', 'this', 'tok', '##eni', '##zer', '.', '[SEP]']
 ```
 
@@ -10368,7 +10368,7 @@ print(encoding.tokens)
 print(encoding.type_ids)
 ```
 
-```python out
+```python
 ['[CLS]', 'let', "'", 's', 'test', 'this', 'tok', '##eni', '##zer', '...', '[SEP]', 'on', 'a', 'pair', 'of', 'sentences', '.', '[SEP]']
 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1]
 ```
@@ -10385,7 +10385,7 @@ Let's test it on our previous `encoding`:
 tokenizer.decode(encoding.ids)
 ```
 
-```python out
+```python
 "let's test this tokenizer... on a pair of sentences."
 ```
 
@@ -10453,7 +10453,7 @@ The option we added to `ByteLevel` here is to not add a space at the beginning o
 tokenizer.pre_tokenizer.pre_tokenize_str("Let's test pre-tokenization!")
 ```
 
-```python out
+```python
 [('Let', (0, 3)), ("'s", (3, 5)), ('Ġtest', (5, 10)), ('Ġpre', (10, 14)), ('-', (14, 15)),
  ('tokenization', (15, 27)), ('!', (27, 28))]
 ```
@@ -10481,7 +10481,7 @@ encoding = tokenizer.encode("Let's test this tokenizer.")
 print(encoding.tokens)
 ```
 
-```python out
+```python
 ['L', 'et', "'", 's', 'Ġtest', 'Ġthis', 'Ġto', 'ken', 'izer', '.']
 ```
 
@@ -10500,7 +10500,7 @@ start, end = encoding.offsets[4]
 sentence[start:end]
 ```
 
-```python out
+```python
 ' test'
 ```
 
@@ -10516,7 +10516,7 @@ and we can double-check it works properly:
 tokenizer.decode(encoding.ids)
 ```
 
-```python out
+```python
 "Let's test this tokenizer."
 ```
 
@@ -10582,7 +10582,7 @@ We can have a look at the pre-tokenization of an example text like before:
 tokenizer.pre_tokenizer.pre_tokenize_str("Let's test the pre-tokenizer!")
 ```
 
-```python out
+```python
 [("▁Let's", (0, 5)), ('▁test', (5, 10)), ('▁the', (10, 14)), ('▁pre-tokenizer!', (14, 29))]
 ```
 
@@ -10612,7 +10612,7 @@ encoding = tokenizer.encode("Let's test this tokenizer.")
 print(encoding.tokens)
 ```
 
-```python out
+```python
 ['▁Let', "'", 's', '▁test', '▁this', '▁to', 'ken', 'izer', '.']
 ```
 
@@ -10624,7 +10624,7 @@ sep_token_id = tokenizer.token_to_id("<sep>")
 print(cls_token_id, sep_token_id)
 ```
 
-```python out
+```python
 0 1
 ```
 
@@ -10646,7 +10646,7 @@ print(encoding.tokens)
 print(encoding.type_ids)
 ```
 
-```python out
+```python
 ['▁Let', "'", 's', '▁test', '▁this', '▁to', 'ken', 'izer', '.', '.', '.', '<sep>', '▁', 'on', '▁', 'a', '▁pair', 
   '▁of', '▁sentence', 's', '!', '<sep>', '<cls>']
 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2]
