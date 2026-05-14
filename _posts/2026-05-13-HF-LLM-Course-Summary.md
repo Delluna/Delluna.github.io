@@ -1,7 +1,7 @@
 ---
 title: 'Hugging Face LLM Course'
-date: 2012-08-14
-permalink: /posts/2012/08/HF-LLM-Course/
+date: 2026-05-13
+permalink: /posts/2026/05/HF-LLM-Course/
 tags:
   - Hugging Face Course
   - LLM
