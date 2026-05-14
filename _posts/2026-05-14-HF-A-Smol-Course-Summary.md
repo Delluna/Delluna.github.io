@@ -1204,7 +1204,7 @@ for name, token in special_tokens.items():
 custom_template = """
 {%- for message in messages %}
     {%- if message['role'] == 'system' %}
-        {%- set system_message = message['content'] %}
+        {%- setset system_message = message['content'] %}
     {%- endif %}
 {%- endfor %}
 {%- if system_message is defined %}
