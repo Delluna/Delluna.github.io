@@ -1,16 +1,13 @@
 ---
 title: 'Hugging Face A Smol Course'
 date: 2026-05-14
-permalink: /posts/2026/05/HF-a-smol-course-summary/
+permalink: /posts/2026/05/HF-a-smol-course/
 tags:
   - LLM
   - AI
-  - Fine-Tuning Language Models
-  - Preference Alignment
-  - VLM
 ---
 
-This is a blog post summarying "HF a smol course".
+This is a blog post summarying 《HF a smol course》.
 
 # Hugging Face A Smol Course
 
