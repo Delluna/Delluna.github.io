@@ -5,6 +5,7 @@ permalink: /posts/2026/05/HF-a-smol-course/
 tags:
   - LLM
   - AI
+render_with_liquid: false
 ---
 
 This is a blog post of  hugging face a smol course summary.
