@@ -1200,27 +1200,8 @@ for name, token in special_tokens.items():
 ##### Custom Template Creation
 
 ```python
-### Create a custom template (advanced users only)
-custom_template = """
-{%- for message in messages %}
-    {%- if message['role'] == 'system' %}
-        {%- 设置 system_message = message['content'] %}
-    {%- endif %}
-{%- endfor %}
-{%- if system_message is defined %}
-<|system|>{{ system_message }}<|end|>
-{%- endif %}
-{%- for message in messages %}
-    {%- if message['role'] == 'user' %}
-<|user|>{{ message['content'] }}<|end|>
-    {%- elif message['role'] == 'assistant' %}
-<|assistant|>{{ message['content'] }}<|end|>
-    {%- endif %}
-{%- endfor %}
-{%- if add_generation_prompt %}
-<|assistant|>
-{%- endif %}
 """
+...
 
 ### Apply custom template (be very careful with this!)
 ### tokenizer.chat_template = custom_template
