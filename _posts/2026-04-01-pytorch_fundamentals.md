@@ -673,3 +673,16 @@ print("x unsqueezed at dim 1:", x.unsqueeze(1).shape, x.unsqueeze(1))
             [8],
             [9]])
 
+## Tensor Concatenation Operations
+
+- **Torch Stack:** `torch.stack(tensors, dim=0) → Tensor`. (tensors：要堆叠的张量序列（可以是列表或元组），所有张量的形状必须相同。dim：新维度的索引（位置），默认值为 0。)
+
+```python
+import torch
+
+t1 = torch.tensor([1, 2, 3])  # (3,)
+
+# 沿着新的维度堆叠
+result = torch.stack([t1, t1, t1], dim=0)
+print(result.shape)  # (3,3)
+
